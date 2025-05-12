@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #000;
+  --color-secondary: #fff;
+}
+
+body {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+}
