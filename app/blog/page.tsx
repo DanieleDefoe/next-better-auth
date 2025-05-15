@@ -1,3 +1,4 @@
+import { PostForm } from "@/_components/post-form";
 import UsersList from "@/_components/users-list";
 import { UsersSchema } from "@/dtos/user";
 import Link from "next/link";
@@ -15,7 +16,7 @@ const getUsers = async () => {
   return parsedUsers.data;
 };
 
-export default async function Blog() {
+export default function Blog() {
   const usersPromise = getUsers();
 
   return (
@@ -25,6 +26,8 @@ export default async function Blog() {
       <Suspense fallback={<div>Loading...</div>}>
         <UsersList usersPromise={usersPromise} />
       </Suspense>
+
+      <PostForm />
     </div>
   );
 }

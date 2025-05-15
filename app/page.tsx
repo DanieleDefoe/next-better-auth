@@ -2,13 +2,28 @@ import Button from "components/button";
 import Image from "next/image";
 import PostsList from "./_components/PostsList";
 import { Suspense } from "react";
+import { notFound } from "next/navigation";
 
 export default async function Page() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+  if (response.ok) {
+    notFound();
+  }
+
   return (
     <div>
       <header className="border-amber-200 border-2">
         <h1 className="text-2xl font-bold">Home page</h1>
-        <Button>Click me</Button>
+        <Button
+          onClick={async () => {
+            "use server";
+
+            console.log("clicked");
+          }}
+        >
+          Click me
+        </Button>
       </header>
 
       <Suspense fallback={<div>Loading...</div>}>
