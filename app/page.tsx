@@ -2,15 +2,8 @@ import Button from "components/button";
 import Image from "next/image";
 import PostsList from "./_components/PostsList";
 import { Suspense } from "react";
-import { notFound } from "next/navigation";
 
 export default async function Page() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-
-  if (response.ok) {
-    notFound();
-  }
-
   return (
     <div>
       <header className="border-amber-200 border-2">

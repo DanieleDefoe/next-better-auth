@@ -6,20 +6,6 @@ interface BlogPostProps {
   };
 }
 
-export function generateStaticParams(): Array<BlogPostProps["params"]> {
-  return [
-    {
-      slug: "my-first-blog-post",
-    },
-    {
-      slug: "my-second-blog-post",
-    },
-    {
-      slug: "my-third-blog-post",
-    },
-  ];
-}
-
 export default function BlogPost({ params }: BlogPostProps) {
   const { slug } = params;
 
