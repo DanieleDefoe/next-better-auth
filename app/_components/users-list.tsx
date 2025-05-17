@@ -1,6 +1,6 @@
 "use client";
 
-import { Users } from "@/dtos/user";
+import { Users } from "@/_dtos/user";
 
 import { use } from "react";
 

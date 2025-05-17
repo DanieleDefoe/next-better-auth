@@ -1,6 +1,6 @@
 "use client";
 
-import { Posts } from "@/dtos/post";
+import { Posts } from "@/_dtos/post";
 import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());

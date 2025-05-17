@@ -1,10 +1,12 @@
 "use server";
+import "server-only";
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { UserSchema, UsersSchema } from "./dtos/user";
+import { UserSchema, UsersSchema } from "./_dtos/user";
 import { cache } from "react";
+import { PostSchema, PostsSchema } from "./_dtos/post";
 
 const CreatePostSchema = z.object({
   title: z.string().min(1),
@@ -48,4 +50,20 @@ export const getUsers = cache(async (id?: string) => {
   }
 
   throw new Error("Failed to parse users");
+});
+
+export const getPost = cache(async (id: string) => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+  );
+
+  const data = await response.json();
+
+  const parsedPost = await PostSchema.safeParseAsync(data);
+
+  if (parsedPost.success) {
+    return parsedPost.data;
+  }
+
+  throw new Error("Failed to parse post");
 });

@@ -1,4 +1,4 @@
-import { PostsSchema } from "@/dtos/post";
+import { PostsSchema } from "@/_dtos/post";
 
 export default async function PostsList() {
   await new Promise((resolve) => setTimeout(resolve, 5000));

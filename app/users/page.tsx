@@ -1,4 +1,5 @@
-import { UsersSchema } from "@/dtos/user";
+import Carousel from "@/_components/gallery";
+import { UsersSchema } from "@/_dtos/user";
 
 import { getUsers } from "@/functions";
 import Link from "next/link";
@@ -14,6 +15,8 @@ export default async function UsersPage() {
           <Link href={`/users/${user.id}`}>{user.name}</Link>
         </li>
       ))}
+
+      <Carousel />
     </ul>
   );
 }

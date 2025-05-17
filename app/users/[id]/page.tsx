@@ -1,4 +1,4 @@
-import { UserSchema } from "@/dtos/user";
+import { UserSchema } from "@/_dtos/user";
 import { getUsers } from "@/functions";
 import { Metadata } from "next";
 

@@ -7,7 +7,7 @@ const nextConfig = {
   },
   experimental: {
     dynamicIO: true,
-    ppr: true,
+    ppr: "incremental",
   },
   images: {
     remotePatterns: [

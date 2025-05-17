@@ -1,6 +1,6 @@
 import { PostForm } from "@/_components/post-form";
 import UsersList from "@/_components/users-list";
-import { UsersSchema } from "@/dtos/user";
+import { UsersSchema } from "@/_dtos/user";
 import Link from "next/link";
 import { Suspense } from "react";
 
