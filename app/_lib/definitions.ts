@@ -14,6 +14,17 @@ export const SignupFormSchema = z.object({
     .trim(),
 });
 
+export const SigninFormSchema = z.object({
+  email: SignupFormSchema.shape.email,
+  password: SignupFormSchema.shape.password,
+});
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+}
+
 export type FormState =
   | {
       errors?: {

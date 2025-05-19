@@ -1,12 +1,16 @@
-import { signup } from "@/actions";
+"use client";
+
+import { register } from "@/actions";
 import Form from "next/form";
 import { useActionState } from "react";
 
 export default function SignupForm() {
-  const [state, formAction, pending] = useActionState(signup, undefined);
+  const [state, formAction, pending] = useActionState(register, undefined);
 
   return (
     <Form action={formAction}>
+      {state?.error && <p className="text-red-500">{state.error}</p>}
+
       <fieldset>
         <label htmlFor="name">Name</label>
         <input id="name" type="text" name="name" placeholder="Name" />
@@ -37,13 +41,17 @@ export default function SignupForm() {
           <p>Password must:</p>
           <ul>
             {state.errors.password?.map((error) => (
-              <li key={error}>- {error}</li>
+              <li key={error}>
+                <p className="text-red-500">- {error}</p>
+              </li>
             ))}
           </ul>
         </div>
       )}
 
-      <button disabled={pending}>Sign up</button>
+      <button disabled={pending} type="submit">
+        Sign up
+      </button>
     </Form>
   );
 }
