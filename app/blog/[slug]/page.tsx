@@ -1,13 +1,13 @@
 import PostsList from "@/_components/posts-list";
 
 interface BlogPostProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function BlogPost({ params }: BlogPostProps) {
-  const { slug } = params;
+export default async function BlogPost({ params }: BlogPostProps) {
+  const { slug } = await params;
 
   return (
     <div>

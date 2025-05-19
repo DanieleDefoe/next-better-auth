@@ -5,6 +5,7 @@ import { Roboto } from "next/font/google";
 
 import "./globals.css";
 import ThemeProvider from "./_providers/ThemeProvider";
+import WebVitals from "./_components/web-vitals";
 
 const roboto = Roboto({
   subsets: ["latin", "cyrillic-ext"],
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
+        <WebVitals />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
