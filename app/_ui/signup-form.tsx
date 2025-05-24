@@ -2,6 +2,7 @@
 
 import { register } from "@/actions";
 import Form from "next/form";
+import Link from "next/link";
 import { useActionState } from "react";
 
 export default function SignupForm() {
@@ -52,6 +53,10 @@ export default function SignupForm() {
       <button disabled={pending} type="submit">
         Sign up
       </button>
+
+      <p>
+        Already have an account? <Link href="/login">Login</Link>
+      </p>
     </Form>
   );
 }

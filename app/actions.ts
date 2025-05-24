@@ -2,9 +2,11 @@
 
 import { signIn } from "auth";
 import { FormState, SignupFormSchema } from "./_lib/definitions";
-import { AuthError } from "next-auth";
+import { AuthError, User } from "next-auth";
 import { redirect } from "next/navigation";
-import { createUser } from "./functions";
+import sql from "./db";
+import bcrypt from "bcryptjs";
+import { createSession, deleteSession } from "./_lib/session";
 
 export async function register(state: FormState, formData: FormData) {
   const values = Object.fromEntries(formData.entries());
@@ -20,8 +22,16 @@ export async function register(state: FormState, formData: FormData) {
   const { name, email, password } = validatedFields.data;
 
   try {
-    await createUser(name, email, password);
-    redirect("/login");
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const [user] = await sql<User[]>`
+      INSERT INTO users (name, email, password)
+      VALUES (${name}, ${email}, ${hashedPassword})
+      RETURNING *
+    `;
+
+    await createSession(user.id!);
+
+    redirect("/dashboard");
   } catch {
     return {
       error: "Failed to create user",
@@ -50,4 +60,9 @@ export async function authenticate(
       }
     }
   }
+}
+
+export async function logout() {
+  await deleteSession();
+  redirect("/login");
 }

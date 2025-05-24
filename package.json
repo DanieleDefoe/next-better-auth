@@ -19,6 +19,7 @@
     "client-only": "^0.0.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
+    "jose": "^6.0.11",
     "next": "15.4.0-canary.36",
     "next-auth": "5.0.0-beta.28",
     "postgres": "^3.4.5",

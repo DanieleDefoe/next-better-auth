@@ -11,7 +11,6 @@ const protectedRoutes = ["/dashboard", "/"];
 export const authConfig = {
   pages: {
     signIn: "/login",
-    newUser: "/register",
   },
   callbacks: {
     async authorized({ auth, request: { nextUrl } }) {
